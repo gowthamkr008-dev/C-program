@@ -101,7 +101,7 @@ Status encode_secret_file_data(EncodeInfo *encInfo,char* data)
 {
   // printf("%s",data);
   int size = strlen(data);
-  for(int i=0;i<size;i++)
+  for(int i = 0;i < size;i++)
   {
     fread(encInfo->image_data,8,sizeof(char),encInfo->fptr_src_image);
     if(encode_byte_to_lsb(data[i],encInfo->image_data) == e_success)

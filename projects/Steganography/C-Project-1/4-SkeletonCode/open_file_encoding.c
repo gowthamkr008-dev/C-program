@@ -13,7 +13,6 @@ Status open_files(EncodeInfo *encInfo)
     {
     	perror("fopen");
     	fprintf(stderr, "ERROR: Unable to open file %s\n", encInfo->src_image_fname);
-
     	return e_failure;
     }
 

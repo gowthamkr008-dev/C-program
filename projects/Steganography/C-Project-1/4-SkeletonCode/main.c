@@ -1,18 +1,32 @@
+  #define _GNU_SOURCE 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+     
 #include "encode.h"
 #include "decode.h"
 // #include "types.h"
 
-int main( int arg,char *argv[])
+// void close_all_ptr(EncodeInfo * EncodeInfo,DecodeInfo *decInfo);
+int main(int arg,char *argv[])
 {
     uint img_size;
+      EncodeInfo encInfo;
+       DecodeInfo decInfo;
+       if(arg <2){
+         printf("Error: Enter the  proper argument\n");
+            printf("./a.out -e/-d  <sourcefile> <secretfile> <optional>\n");
+            printf("-e => Do encoding\nsourcefile => which file you need to encode\nsecret file =>secret data present file\noptional =>require output file name\n");
+            printf("-d => do Decoding\nSource file => which file you need to decode\noptional => output data file name\n");
+            return -1;
+       }
+
+
     if(check_operation_type(argv) == e_encode ){
         if(arg <4){
             printf("Error: Enter the  proper argument\n");
             printf("./a.out -e/-d  <sourcefile> <secretfile> <optional>\n");
-            printf("-e => Do encoding\nsourcefile => which file you need to encode\nsecret file =>secret data present file\noptional =>require output file name\n");
+            printf("-e => Do encoding\nsourcefile => which file you need to encode\nsecret file =>secret data present file\noptional =>require output file name\n\n");
             printf("-d => do Decoding\nSource file => which file you need to decode\noptional => output data file name\n");
             return -1;
         }
@@ -26,12 +40,12 @@ int main( int arg,char *argv[])
         }
     }
     /* check the operation type*/
-    switch (check_operation_type(argv) )
+    switch (check_operation_type(argv))
     {
         case e_encode: 
         {
             printf("Start Encoding\n");
-            EncodeInfo encInfo;
+          
             /*user given valid file */
             if(read_and_validate_encode_args(argv,&encInfo) == e_success)
             {
@@ -47,6 +61,7 @@ int main( int arg,char *argv[])
                 /* start encoding */
                 if(do_encoding(&encInfo) == e_success)
                 {
+                   
                     printf("output file name %s\n",encInfo.stego_image_fname);
                 }else
                 {
@@ -69,7 +84,7 @@ int main( int arg,char *argv[])
     case e_decode:
     {
         printf("Start Decoding\n");
-        DecodeInfo decInfo;
+       
         if(read_and_validate_decode_args (argv,&decInfo) == e_success )
         {
             puts("Valid file ✅");
@@ -79,7 +94,8 @@ int main( int arg,char *argv[])
                 if(do_decoding(&decInfo) == e_success)
                 {
                     puts("Decode complete✅");
-                     printf("\nfile name %s\n\n",decInfo.data_fname);
+                    printf("\nfile name %s\n\n",decInfo.data_fname);
+                    return 0;
                 }else
                 {
                     puts("Fail to decode❌");
@@ -93,13 +109,15 @@ int main( int arg,char *argv[])
             puts("Invalid file format❌\n");
             return -1;
         }
-    }
+        } 
     break;
     
     default:
     printf("Invalid argunment\n");
     return -1;
 }
+fcloseall();
+// close_all_ptr(&encInfo,&decInfo);
 return 0;
 }
 

@@ -16,6 +16,7 @@ typedef struct DecodeInfo
     char image_data[MAX_IMAGE_BUF_SIZE]; /* use during encoding */
 
     /* Secret File Info */
+    // char filename[50];
     char *data_fname;//✅
     FILE *fptr_data;//✅
     char extn_secret_file[MAX_FILE_SUFFIX];/*   .txt */ //✅

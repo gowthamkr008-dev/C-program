@@ -31,7 +31,7 @@ Status check_capacity(EncodeInfo *encInfo){
   uint total_sec_size =( mg + size_of_ext + ext_char +size_of_data +encInfo->size_secret_file ) * 8;
   printf("Total size %d\nImage size %d\n",total_sec_size,encInfo->image_capacity);
 
-  if(encInfo->size_secret_file  <= 0){
+  if(encInfo->size_secret_file  == 0){
     printf("Not present any secret data\n");
     return e_failure;
   }

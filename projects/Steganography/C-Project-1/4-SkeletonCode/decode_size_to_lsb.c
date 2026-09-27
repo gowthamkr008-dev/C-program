@@ -11,8 +11,9 @@ Status decode_size_to_lsb(int * data,char * img_buff)
     res = (res * 2) + digit;
     // printf("%d ",digit);
     }
-    *data = res;
+    *data = res;  
     return e_success;
   }
 
     /*done */
+    

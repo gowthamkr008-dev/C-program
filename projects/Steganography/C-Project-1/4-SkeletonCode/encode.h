@@ -93,6 +93,8 @@ Status encode_size_to_lsb(int data, char *image_buffer);
 /* Copy remaining image bytes from src to stego image after encoding✅ */
 Status copy_remaining_img_data(FILE *fptr_src, FILE *fptr_dest);
 
+
+
 #endif
 
   /*done */

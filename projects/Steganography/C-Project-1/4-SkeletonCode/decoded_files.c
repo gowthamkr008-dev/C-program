@@ -1,3 +1,4 @@
+#define _GNU_SOURCE  
 #include<stdio.h>
 #include<string.h>
 #include"decode.h"
@@ -82,9 +83,11 @@ Status decode_secret_data(DecodeInfo * decInfo,int size)
     if(decode_byte_to_lsb(&ch,decInfo->image_data) == e_success)
     {
       //printf("%c",ch);
-      fwrite(&ch,1,sizeof(char),decInfo->fptr_data);
+      fwrite(&ch,1,1,decInfo->fptr_data);
     }
   }
+
+
   return e_success;
 }
 

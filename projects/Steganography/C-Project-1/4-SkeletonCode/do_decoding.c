@@ -1,4 +1,6 @@
+
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 #include"common.h"
 #include "decode.h"
@@ -6,8 +8,8 @@
 /* start decoding  */
 Status do_decoding(DecodeInfo *decInfo)
 {
-  puts("\nStart decoding");
-  fseek(decInfo->fptr_src_image,54,SEEK_SET);
+  printf("Start decoding");
+  fseek(decInfo->fptr_src_image,54,SEEK_CUR);
   
   /*decode magic string*/
   char magicstring[4];
@@ -38,7 +40,11 @@ Status do_decoding(DecodeInfo *decInfo)
     if(decode_file_extern(ext,decInfo,ext_size)==e_success )
     {
       puts("Extension Decoded✅\n");
-      strcat(decInfo->data_fname,ext);
+      printf("%s\n",ext);
+      char *fname;
+      strcpy(fname, decInfo->data_fname);
+      decInfo->data_fname = fname;
+
       decInfo->fptr_data = fopen(decInfo->data_fname,"w");
       if(decInfo->fptr_data == NULL)
       {
@@ -68,7 +74,7 @@ Status do_decoding(DecodeInfo *decInfo)
   {
     return e_failure;
   }
- 
+
   return e_success;
 }
 
