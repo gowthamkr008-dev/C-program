@@ -38,8 +38,9 @@ Status do_decoding(DecodeInfo *decInfo)
     if(decode_file_extern(ext,decInfo,ext_size)==e_success )
     {
       printf("extracted file extension %s\n",ext);
-      printf("%s\n%s\n",decInfo->data_fname,ext);
-      my_strcat(decInfo->data_fname,ext);
+      printf("%s%s\n",decInfo->data_fname,ext);
+      strcat(decInfo->data_fname,ext);
+      printf("%s\n",decInfo->data_fname);
       decInfo->fptr_data = fopen(decInfo->data_fname,"w");
       if(decInfo->fptr_data == NULL)
       {
@@ -71,6 +72,7 @@ Status do_decoding(DecodeInfo *decInfo)
   {
     return e_failure;
   }
+  printf("file name %s\n",decInfo->data_fname);
   return e_success;
 }
 

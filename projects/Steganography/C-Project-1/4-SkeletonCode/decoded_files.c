@@ -42,7 +42,7 @@ Status decode_size_to_ext(int *num,DecodeInfo * decInfo)
 /* decode the file extension */
 Status decode_file_extern(char * file_extern,DecodeInfo * DecInfo,int size_extern)
 {
-  char ext[size_extern];
+  char ext[size_extern+1];
   int i;
   for( i = 0;i<size_extern;i++)
   {
@@ -50,6 +50,8 @@ Status decode_file_extern(char * file_extern,DecodeInfo * DecInfo,int size_exter
     if( decode_byte_to_lsb(&ext[i],DecInfo->image_data)== e_success)
     {
       printf("%c",ext[i]);
+    }else{
+      return e_failure;
     }
   }
   ext[i] = '\0';
