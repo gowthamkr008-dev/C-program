@@ -6,8 +6,8 @@
 /* start decoding  */
 Status do_decoding(DecodeInfo *decInfo)
 {
-  fseek(decInfo->fptr_src_image,54,SEEK_CUR);
-  // printf("file pointer %ld\n ",ftell(decInfo->fptr_src_image));
+  puts("\nStart decoding");
+  fseek(decInfo->fptr_src_image,54,SEEK_SET);
   
   /*decode magic string*/
   char magicstring[4];
@@ -16,10 +16,11 @@ Status do_decoding(DecodeInfo *decInfo)
   {
     if(strcmp(magicstring,MAGIC_STRING) == 0)
     {
-      printf("Secrat data present\n");
+       puts("Magic string present✅");
+       puts("Secrat data present\n");
     }else
     {
-      printf("No secret data data present\n");
+      printf("No secret data data present❌\n");
       return e_failure;
     }
   }else
@@ -32,15 +33,12 @@ Status do_decoding(DecodeInfo *decInfo)
   int ext_size;
   if(decode_size_to_ext (&ext_size,decInfo) == e_success)
   {
-    printf("size of extension %d\n",ext_size);
     char ext[ext_size];
-    printf("ectract file extension\n");
+    puts("Extract file extension");
     if(decode_file_extern(ext,decInfo,ext_size)==e_success )
     {
-      printf("extracted file extension %s\n",ext);
-      printf("%s%s\n",decInfo->data_fname,ext);
+      puts("Extension Decoded✅\n");
       strcat(decInfo->data_fname,ext);
-      printf("%s\n",decInfo->data_fname);
       decInfo->fptr_data = fopen(decInfo->data_fname,"w");
       if(decInfo->fptr_data == NULL)
       {
@@ -50,29 +48,27 @@ Status do_decoding(DecodeInfo *decInfo)
     }
   }else
   {
-    printf("Fail to decode\n");
+    printf("Fail to decode❌\n");
     return e_failure;
   }
   
   
   int size_data;
-  if(decode_size_to_ext (&size_data,decInfo) == e_success)
+  puts("Decode length of data");
+  if(decode_size_to_data(&size_data,decInfo) == e_success)
   {
-    // printf("decoded size : %d\n",size_data);
-    char data[size_data];
+    printf("Decoded length of data✅\n\n");
   }else
   {
     return e_failure;
   }
   
-  if(decode_secret_data(decInfo,size_data)==e_success)
-  {
-    printf("Data succesfully decoded\n");
-  }else
+  puts("Secret Data Decode");
+  if(decode_secret_data(decInfo,size_data) == e_failure)
   {
     return e_failure;
   }
-  printf("file name %s\n",decInfo->data_fname);
+ 
   return e_success;
 }
 

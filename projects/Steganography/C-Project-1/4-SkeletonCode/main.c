@@ -73,21 +73,20 @@ int main( int arg,char *argv[])
         if(read_and_validate_decode_args (argv,&decInfo) == e_success )
         {
             puts("Valid file ✅");
-            printf("%s\n",decInfo.src_image_fname);
-            printf("%s\n ",decInfo.data_fname);
             if(open_file_decoding (&decInfo) == e_success)
             {
-                puts("Succesfully file open");
+                puts("file opened");
                 if(do_decoding(&decInfo) == e_success)
                 {
                     puts("Decode complete✅");
+                     printf("\nfile name %s\n\n",decInfo.data_fname);
                 }else
                 {
-                    puts("Fail to decoding❌");
+                    puts("Fail to decode❌");
                 }
             }else
             {
-                puts("Fail opening file❌");
+                puts("Fail to opening file❌");
             }
         }else
         {

@@ -56,7 +56,7 @@ Status do_encoding(EncodeInfo *encInfo)
   
   /* encode the extension  */
   puts("Encode the file extension");
-  if(encode_secret_file_extn (encInfo->extn_secret_file,encInfo)==e_success)
+  if(encode_secret_file_extn(encInfo->extn_secret_file,encInfo)==e_success)
   {
     puts("extension encoded✅\n");
   }else

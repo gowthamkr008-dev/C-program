@@ -51,7 +51,10 @@ Status decode_file_extern(char * file_extern,DecodeInfo * DecodeInfo,int size_ex
 Status decode_secret_data(DecodeInfo * DecodeInfo,int size);
 
 
-  void my_strcat(char *dest, const char *src);
+Status decode_size_to_data(int *num,DecodeInfo * decInfo);
+
+
+  // void my_strcat(char *dest, const char *src);
 /*
 
 
