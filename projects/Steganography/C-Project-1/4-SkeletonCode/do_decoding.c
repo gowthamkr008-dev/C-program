@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<string.h>
-#include"types.h"
 #include"common.h"
 #include "decode.h"
 
@@ -12,6 +11,7 @@ Status do_decoding(DecodeInfo *decInfo)
   
   /*decode magic string*/
   char magicstring[4];
+  puts("Decode magic string");
   if(decode_magic_string(magicstring,decInfo)== e_success)
   {
     if(strcmp(magicstring,MAGIC_STRING) == 0)
@@ -38,8 +38,8 @@ Status do_decoding(DecodeInfo *decInfo)
     if(decode_file_extern(ext,decInfo,ext_size)==e_success )
     {
       printf("extracted file extension %s\n",ext);
-      strcat(decInfo->data_fname,ext);
-      printf("Merged file name %s\n",decInfo->data_fname);
+      printf("%s\n%s\n",decInfo->data_fname,ext);
+      my_strcat(decInfo->data_fname,ext);
       decInfo->fptr_data = fopen(decInfo->data_fname,"w");
       if(decInfo->fptr_data == NULL)
       {
@@ -55,9 +55,9 @@ Status do_decoding(DecodeInfo *decInfo)
   
   
   int size_data;
-  if(decode_size_to_ext (&size_data,decInfo)== e_success)
+  if(decode_size_to_ext (&size_data,decInfo) == e_success)
   {
-    printf("decoded size : %d\n",size_data);
+    // printf("decoded size : %d\n",size_data);
     char data[size_data];
   }else
   {
@@ -74,3 +74,4 @@ Status do_decoding(DecodeInfo *decInfo)
   return e_success;
 }
 
+  /*done */

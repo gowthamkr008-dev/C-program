@@ -11,7 +11,11 @@ Status read_and_validate_decode_args(char *argv[], DecodeInfo *decInfo){
   if(argv[3] != NULL){
     if(strstr (argv[3],".txt") != NULL ){
       char *name = strtok(argv[3],".");
-      decInfo->data_fname = name;
+      if(name != NULL){
+        name = decInfo->data_fname;
+      }else{
+        decInfo->data_fname = name;
+      }
       // printf("file name without extension %s\n",decInfo->data_fname);
       }else
       {

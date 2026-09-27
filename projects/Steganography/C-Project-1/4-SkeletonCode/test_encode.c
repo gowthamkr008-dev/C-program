@@ -2,7 +2,7 @@
 #include <string.h>
 #include "encode.h"
 #include "decode.h"
-#include "types.h"
+// #include "types.h"
 
 int main( int arg,char *argv[])
 {
@@ -32,7 +32,7 @@ int main( int arg,char *argv[])
             printf("Start Encoding\n");
             EncodeInfo encInfo;
             /*user given valid file */
-            if(read_and_validate_encode_args(argv,&encInfo) ==e_success)
+            if(read_and_validate_encode_args(argv,&encInfo) == e_success)
             {
                 /*
                 printf("source file name %s\n",encInfo.src_image_fname);
@@ -42,11 +42,11 @@ int main( int arg,char *argv[])
                /* file opening */
                if(open_files(&encInfo) == e_success)
                {
-                printf("Do Encoding ✅\n");
+                printf("Start Encoding\n");
                 /* start encoding */
                 if(do_encoding(&encInfo) == e_success)
                 {
-                    puts("Enocding completed ✅");
+                    printf("output file name %s\n",encInfo.stego_image_fname);
                 }else
                 {
                     puts("fail to decode ❌");
@@ -77,20 +77,20 @@ int main( int arg,char *argv[])
             if(open_file_decoding (&decInfo) == e_success)
             {
                 puts("Succesfully file open");
-                if(do_decoding(&decInfo)== e_success)
+                if(do_decoding(&decInfo) == e_success)
                 {
-                    puts("Decode completed");
+                    puts("Decode complete✅");
                 }else
                 {
-                    puts("Fail to decoding");
+                    puts("Fail to decoding❌");
                 }
             }else
             {
-                puts("Fail opening file");
+                puts("Fail opening file❌");
             }
         }else
         {
-            printf("Invalid file format\n");
+            puts("Invalid file format❌\n");
             return -1;
         }
     }
@@ -102,3 +102,5 @@ int main( int arg,char *argv[])
 }
 return 0;
 }
+
+  /*done */

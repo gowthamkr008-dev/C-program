@@ -4,27 +4,35 @@
 #include "types.h"
 #include "common.h"
 
-Status encode_size_to_lsb(int data, char *image_buffer){
- /*
+Status encode_size_to_lsb(int data, char *image_buffer)
+{
+    int get,clear,i,l=0;
+  /*
   printf("data given : %d\n",data);
   printf("Data in binary : ");
-  int i;
-  for(i =31;i>=0;i--){
+
+  
+  for(i =31;i>=0;i--)
+  {
     printf("%d ",(data>>i) &1);
   }
+  
   printf("\n");
-*/
-  /*
+  
   printf("Readed data before encode  : ");
-  for(i = 31 ;i >= 0; i-- ){
+  for(i = 31 ;i >= 0; i-- )
+  {
     printf("%d ",image_buffer[i]&1);
   }
-    */
+  
   printf("\n");
-  int get,clear,i,l=0;
-  for(i =31;i>=0;i--){
+  */
+  for(i =31;i>=0;i--)
+  {
     /*clear lsb bit */
+    
     clear = image_buffer[l] & ~(1);
+    
     /* get lsb bit */
     get = (data>>i) & 1; 
 
@@ -45,6 +53,11 @@ Status encode_size_to_lsb(int data, char *image_buffer){
 
   return e_success;
 }
+/* done */
+
+
+
+
 //   printf("Binary data : ");
 //   for(int i =31;i >= 0 ;i--){
 //     printf("%d ",(data>>i) & 1);

@@ -94,3 +94,5 @@ Status encode_size_to_lsb(int data, char *image_buffer);
 Status copy_remaining_img_data(FILE *fptr_src, FILE *fptr_dest);
 
 #endif
+
+  /*done */

@@ -2,7 +2,6 @@
 #include <string.h>
 #include "encode.h"
 #include "common.h"
-#include "types.h"
 
 typedef unsigned int  uint;
 
@@ -30,15 +29,15 @@ Status check_capacity(EncodeInfo *encInfo){
   encInfo->size_secret_file   = get_file_size(encInfo->fptr_secret,encInfo);
 
   uint total_sec_size =( mg + size_of_ext + ext_char +size_of_data +encInfo->size_secret_file ) * 8;
-  printf("total size %d\nimage size %d\n",total_sec_size,encInfo->image_capacity);
+  printf("Total size %d\nImage size %d\n",total_sec_size,encInfo->image_capacity);
 
   if(encInfo->size_secret_file  <= 0){
-    printf("not present any secret data\n");
+    printf("Not present any secret data\n");
     return e_failure;
   }
 
   if(encInfo->image_capacity > total_sec_size){
-    puts("Enough capacity available✅\n");
+
   }else{
     return e_failure;
   }

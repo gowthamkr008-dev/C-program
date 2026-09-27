@@ -19,3 +19,5 @@ typedef enum
 } OperationType;
 
 #endif
+
+/* done */
