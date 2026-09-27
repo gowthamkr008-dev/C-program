@@ -5,6 +5,8 @@
 Status encode_byte_to_lsb(char data, char *image_buffer)
 {
   int i,j,clear,get;
+
+
   j = 7;
   for(i = 0;i < 8; i++)
   {
@@ -19,7 +21,7 @@ Status encode_byte_to_lsb(char data, char *image_buffer)
     image_buffer[i] = clear | get;
 
   }
- 
+
  return e_success;
 }
   /*done✅ */

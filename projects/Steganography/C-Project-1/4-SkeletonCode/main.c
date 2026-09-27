@@ -9,6 +9,35 @@ For Encoding
 
 For Decoding
     ./a.out -d <Secret data present image file> <optional output file>
+
+
+
+    1 character need a 8 byte of data to  encode 
+
+   character    binary            image data before encode             image data after encoded
+
+     #       0 0 1 0 0 0 1 1         0 0 0 0 0 0 0 1                       0 0 0 0 0 0 0 0                   
+                                     0 0 0 0 0 0 0 1                       0 0 0 0 0 0 0 0 
+                                     0 0 0 0 0 0 0 1                       0 0 0 0 0 0 0 1 
+                                     0 0 0 0 0 0 1 1                       0 0 0 0 0 0 1 0 
+                                     0 0 0 0 0 0 1 1                       0 0 0 0 0 0 1 0 
+                                     0 0 0 0 0 0 1 1                       0 0 0 0 0 0 1 0
+                                     0 0 0 0 0 0 1 1                       0 0 0 0 0 0 1 1 
+                                     0 0 0 0 0 1 0 1                       0 0 0 0 0 1 0 1   
+                                     
+                                     
+ 1 integer need 32 byte of data to encode                           
+    Integer                         4
+    Binary                         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+    Image data LSB before encoded  1 1 0 0 0 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 1 1 0 1 1 0 1 1 1 
+    Image data LSB After encoded   0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+ 
+ 
+ 
+  
+  
+ 
     
 
 */
