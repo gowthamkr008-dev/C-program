@@ -1,11 +1,31 @@
 #include<stdio.h>
-#include<string.h>
 #include "encode.h"
 
+/* encode characters */
 Status encode_byte_to_lsb(char data, char *image_buffer)
 {
   int i,j,clear,get;
-  /*
+  j = 7;
+  for(i = 0;i < 8; i++)
+  {
+    /* clear bit*/
+    clear = image_buffer[i] & ~(1);
+
+    /* get bit*/
+    get = (data >> j) & 1;
+    j--;
+
+    /* set bit*/
+    image_buffer[i] = clear | get;
+
+  }
+ 
+ return e_success;
+}
+  /*done✅ */
+
+
+ /*
   puts("Binary data");
   for(i = 7;i >= 0;i--)
   {
@@ -25,27 +45,6 @@ Status encode_byte_to_lsb(char data, char *image_buffer)
   
   printf("\n\n");
 */
-  j = 7;
-  
-  for(i = 0;i < 8; i++)
-  {
-    /* clear bit*/
-    clear = image_buffer[i] & ~(1);
-    // printf("%x ",clear);
-    /* get bit*/
-    get = (data >> j) & 1;
-    j--;
-    // printf("%d ",get);
-    /* set bit*/
-    image_buffer[i] = clear | get;
-  }
- 
- return e_success;
-}
-/*done */
-
-
-
 
  /*
   printf("Decoding\n");

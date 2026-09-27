@@ -3,7 +3,7 @@
 #include "types.h"
 
 
-
+/* open file for encoding */
 Status open_files(EncodeInfo *encInfo)
 {
     // Src Image file
@@ -42,5 +42,4 @@ Status open_files(EncodeInfo *encInfo)
     return e_success;
 }
 
-
-/* done */
+  /*done✅ */

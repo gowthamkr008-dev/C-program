@@ -8,6 +8,7 @@
 /* start decoding  */
 Status do_decoding(DecodeInfo *decInfo)
 {
+  /* move the file pointer to 54th bit*/
   printf("Start decoding");
   fseek(decInfo->fptr_src_image,54,SEEK_CUR);
   
@@ -22,12 +23,12 @@ Status do_decoding(DecodeInfo *decInfo)
        puts("Secrat data present\n");
     }else
     {
-      printf("No secret data data present❌\n");
+      printf("No secret data data present\n");
       return e_failure;
     }
   }else
   {
-    printf("Fail to decode\n");
+    printf("Fail to decode❌\n");
     return e_failure;
   }
   
@@ -40,11 +41,7 @@ Status do_decoding(DecodeInfo *decInfo)
     if(decode_file_extern(ext,decInfo,ext_size)==e_success )
     {
       puts("Extension Decoded✅\n");
-      printf("%s\n",ext);
-      char *fname;
-      strcpy(fname, decInfo->data_fname);
-      decInfo->data_fname = fname;
-
+      strcat(decInfo->data_fname,ext);
       decInfo->fptr_data = fopen(decInfo->data_fname,"w");
       if(decInfo->fptr_data == NULL)
       {
@@ -59,6 +56,7 @@ Status do_decoding(DecodeInfo *decInfo)
   }
   
   
+  /* decode the length of data*/
   int size_data;
   puts("Decode length of data");
   if(decode_size_to_data(&size_data,decInfo) == e_success)
@@ -69,6 +67,7 @@ Status do_decoding(DecodeInfo *decInfo)
     return e_failure;
   }
   
+    /* decode the secret data */
   puts("Secret Data Decode");
   if(decode_secret_data(decInfo,size_data) == e_failure)
   {
@@ -78,4 +77,4 @@ Status do_decoding(DecodeInfo *decInfo)
   return e_success;
 }
 
-  /*done */
+  /*done✅ */

@@ -4,15 +4,12 @@
 #include "common.h"
 
 
-/* astart encoding */
+/* start encoding */
 Status do_encoding(EncodeInfo *encInfo)
 {
   /*check enough space there in image file or not */
   puts("Capacity checking\n");
-  if(check_capacity(encInfo) == e_success)
-  {
-    puts("Enough capacity available✅\n");
-  }else
+  if(check_capacity(encInfo) == e_failure)
   {
     puts("Capacity not available❌\n");
     return e_failure;
@@ -98,12 +95,13 @@ Status do_encoding(EncodeInfo *encInfo)
     printf("Error in remaining data copy❌\n");
     return e_failure;
   }
-  // printf("extension %s\n",encInfo->extn_secret_file);
+
+
   puts("Encoded completed✅\n");
   return e_success;
 }
 
-  /*done */
+  /*done✅ */
 
 
   /*

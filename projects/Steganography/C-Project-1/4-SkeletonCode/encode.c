@@ -10,6 +10,7 @@
  * Description: In BMP Image, width is stored in offset 18,
  * and height after that. size is 4 bytes
  */
+
 uint get_image_size_for_bmp(FILE *fptr_image)
 {
     uint width, height;
@@ -39,4 +40,4 @@ uint get_image_size_for_bmp(FILE *fptr_image)
  */
 
 
- /* done */
+  /*done✅ */
