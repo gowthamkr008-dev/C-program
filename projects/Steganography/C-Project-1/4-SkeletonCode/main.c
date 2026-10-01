@@ -180,6 +180,9 @@ int main(int arg,char *argv[])
                 printf("\n");
 
                  printf("%23s Secret Data file name %s\n"," ",decInfo.data_fname);
+                 if(decInfo.data_fname != NULL){
+                    free(decInfo.data_fname);
+                 }
 
                 for(int i =0;i<80;i++)
                         printf("=");
