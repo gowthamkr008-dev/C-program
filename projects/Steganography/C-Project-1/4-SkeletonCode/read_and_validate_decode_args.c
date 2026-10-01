@@ -33,7 +33,7 @@ Status read_and_validate_decode_args(char *argv[], DecodeInfo *decInfo)
     
     decInfo->data_fname = strtok(decInfo->data_fname,".");
     
-    printf("file %s\n",decInfo->data_fname);
+
     return e_success;
   }
 

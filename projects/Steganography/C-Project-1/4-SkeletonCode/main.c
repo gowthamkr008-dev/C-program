@@ -10,8 +10,6 @@ For Encoding
 For Decoding
     ./a.out -d <Secret data present image file> <optional output file>
 
-
-
     1 character need a 8 byte of data to  encode 
 
    character    binary            image data before encode             image data after encoded
@@ -31,16 +29,8 @@ For Decoding
     Binary                         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
     Image data LSB before encoded  1 1 0 0 0 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 1 1 0 1 1 0 1 1 1 
     Image data LSB After encoded   0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-
- 
- 
- 
-  
-  
- 
-    
-
 */
+
 #define _GNU_SOURCE 
 #include <stdio.h>
 #include <string.h>
@@ -85,6 +75,19 @@ int main(int arg,char *argv[])
             return -1;
         }
     }
+
+    for(int i =0;i<80;i++)
+	    printf("=");
+
+    printf("\n");
+
+    printf("%25s %s\n" ," ", "LSB Image Steganography");
+
+    for(int i =0;i<80;i++){
+	    printf("=");
+   
+    }
+    printf("\n\n");
     
     
     /* check the operation type*/
@@ -92,22 +95,41 @@ int main(int arg,char *argv[])
     {
         case e_encode:
         {
-            printf("Start Encoding\n");
-          
-            /*user given valid file */
+	            /*user given valid file */
             if(read_and_validate_encode_args(argv,&encInfo) == e_success)
             {
                 
                /* file opening */
                if(open_files(&encInfo) == e_success)
                {
-                printf("Start Encoding\n");
+                for(int i =0;i<80;i++)
+			printf("=");
+		
+		printf("\n");
+		
+		printf("%27s %s\n" ," ", "Start Encoding");
+		
+		for(int i =0;i<80;i++)
+			printf("=");
+	       
+		printf("\n");
 
-                /* start encoding */
+          
+                 /* start encoding */
                 if(do_encoding(&encInfo) == e_success)
                 {
-                   
-                    printf("output file name %s\n",encInfo.stego_image_fname);
+		 for(int i =0i;i<80;i++)
+                        printf("=");
+
+                printf("\n");
+
+                 printf("%23s Secret Image file name %s\n"," ",encInfo.stego_image_fname);
+
+                for(int i =0;i<80;i++)
+                        printf("=");
+
+                printf("\n");
+                      
                 }else
                 {
                     puts("fail to decode ❌");
@@ -128,7 +150,17 @@ int main(int arg,char *argv[])
     
     case e_decode:
     {
-        printf("Start Decoding\n");
+         for(int i =0;i<80;i++)
+                        printf("=");
+
+                printf("\n");
+
+                printf("%27s %s\n" ," ", "Start Decoding");
+
+                for(int i =0;i<80;i++)
+                        printf("=");
+
+                printf("\n");
        
          /*user given valid file */
         if(read_and_validate_decode_args (argv,&decInfo) == e_success )
@@ -137,13 +169,22 @@ int main(int arg,char *argv[])
             /* File Opening */
             if(open_file_decoding (&decInfo) == e_success)
             {
-                puts("file opened");
+                puts("file opened\n");
                 /* Start decoding */
                 if(do_decoding(&decInfo) == e_success)
-                {
+               {
                     puts("Decode complete✅");
-                    printf("\nfile name %s\n\n",decInfo.data_fname);
-                    return 0;
+		     for(int i =0;i<80;i++)
+                        printf("=");
+
+                printf("\n");
+
+                 printf("%23s Secret Data file name %s\n"," ",decInfo.data_fname);
+
+                for(int i =0;i<80;i++)
+                        printf("=");
+
+                printf("\n");
                 }else
                 {
                     puts("Fail to decode❌");

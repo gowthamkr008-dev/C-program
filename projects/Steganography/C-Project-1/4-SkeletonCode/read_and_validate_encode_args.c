@@ -5,7 +5,6 @@
 /* user give proper file */
 Status read_and_validate_encode_args(char *argv[], EncodeInfo *encInfo)
 {
-  puts("File validation ");
   /* check the source extension is .bmp */
   if(strstr(argv[2],".bmp") != NULL)
   {

@@ -9,7 +9,7 @@
 Status do_decoding(DecodeInfo *decInfo)
 {
   /* move the file pointer to 54th bit*/
-  printf("Start decoding");
+
   fseek(decInfo->fptr_src_image,54,SEEK_CUR);
   
   /*decode magic string*/
@@ -20,7 +20,7 @@ Status do_decoding(DecodeInfo *decInfo)
     if(strcmp(magicstring,MAGIC_STRING) == 0)
     {
        puts("Magic string present✅");
-       puts("Secrat data present\n");
+       puts("Secrat data present✅\n");
     }else
     {
       printf("No secret data data present\n");
@@ -37,7 +37,7 @@ Status do_decoding(DecodeInfo *decInfo)
   if(decode_size_to_ext (&ext_size,decInfo) == e_success)
   {
     char ext[ext_size];
-    puts("Extract file extension");
+    puts("Decode file extension");
     if(decode_file_extern(ext,decInfo,ext_size)==e_success )
     {
       puts("Extension Decoded✅\n");
