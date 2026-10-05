@@ -1,0 +1,11 @@
+integer                    -128 - 127            -2,147,483,648    to     2,147,483,647
+unsignedinteger             0 - 255               0      to   4,294,967,295
+char                       -128 to 127           
+unsigned char               0 to 255
+float                          6  decimal point      
+double
+long                                                -2,147,483,648    to   2,147,483,647 32 bit
+                          -9,223,372,036,854,775,808     to       9,223,372,036,854,775,807   64 bit
+float
+short                     -32768 to 32767
+unsigned integer           0 to 65535
