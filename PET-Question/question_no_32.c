@@ -40,3 +40,42 @@ void moveZeros(int arr[], int size) {
         arr[nonZeroIndex++] = 0;
       }
     }
+
+
+  /*  
+     #include <stdio.h>
+void move_zero(int size, int *arr){
+int i,j;
+for(i =0;i<size;i++){
+if(arr[i] == 0){
+for(j =i;j<size-1; j++){
+arr[j]=arr[j+1];
+
+
+}
+arr[j] = 0;
+}
+}
+}
+void print_arr(int size, int *arr){
+for(int i =0;i<size;i++){
+printf("%d ",arr[i]);
+}
+}
+int main()
+{
+int size;
+scanf("%d",&size);
+
+int arr[size];
+int i;
+for( i = 0;i < size; i++){
+scanf("%d",&arr[i]);
+}
+move_zero(size,arr);
+    
+print_arr(size,arr);
+return 0; 
+}
+    
+  */
